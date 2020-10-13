@@ -3,6 +3,7 @@ var userAgent = navigator.userAgent;
 var default_useragent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0"; // Firefox
 var useragent;
 
+/*
 // Determine user's actual browser
 var agent = "chrome";
 if (/OPR/.test(userAgent)) { agent = "opera"; }
@@ -17,7 +18,6 @@ else if (/Linux/.test(userAgent)) { platform="linux"; }
 // A List of user agents we can use to trigger the old layout
 var agents = {
   "chrome": {
-    /* Emulate Firefox instead to enable video calls */
     //"win":"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36",
     //"mac":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36",
     //"linux":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.0 Safari/537.36"
@@ -50,6 +50,11 @@ if (!useragent) {
   useragent = default_useragent;
 }
 
+*/
+
+// Force a working useragent after Facebook started redirecting users to mobile site
+useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063";
+
 var enabled = true;
 var api = typeof chrome!="undefined" ? chrome : browser;
 
@@ -59,7 +64,7 @@ var api = typeof chrome!="undefined" ? chrome : browser;
 // In that case, extension background pages apparetly don't run, so we need to bounce to a new tab
 var opera_startpage_tab_ids = {};
 api.webNavigation.onHistoryStateUpdated.addListener(function (details) {
-  if (details.url==="chrome://startpage/") {
+  if (details.url==="chrome://.*?/") {
     opera_startpage_tab_ids[details.tabId] = true;
   }
   if (details.url==="https://www.facebook.com/" && opera_startpage_tab_ids[details.tabId]) {
