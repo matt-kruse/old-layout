@@ -53,7 +53,7 @@ if (!useragent) {
 */
 
 // Force a working useragent after Facebook started redirecting users to mobile site
-useragent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063";
+useragent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0";
 
 var enabled = true;
 var api = typeof chrome!="undefined" ? chrome : browser;
