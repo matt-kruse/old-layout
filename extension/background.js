@@ -3,55 +3,6 @@ var userAgent = navigator.userAgent;
 var default_useragent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0"; // Firefox
 var useragent;
 
-/*
-// Determine user's actual browser
-var agent = "chrome";
-if (/OPR/.test(userAgent)) { agent = "opera"; }
-else if (/Edg/.test(userAgent)) { agent="edge"; }
-else if (/Firefox/.test(userAgent)) { agent="firefox"; }
-
-// Determine user's actual platform
-var platform = "win";
-if (/Macintosh/.test(userAgent)) { platform="mac"; }
-else if (/Linux/.test(userAgent)) { platform="linux"; }
-
-// A List of user agents we can use to trigger the old layout
-var agents = {
-  "chrome": {
-    //"win":"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36",
-    //"mac":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36",
-    //"linux":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.0 Safari/537.36"
-    "win":"Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0",
-    "mac":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:54.0) Gecko/20100101 Firefox/54.0",
-    "linux":"Mozilla/5.0 (X11; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0"
-  },
-  "firefox": {
-    "win":"Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0",
-    "mac":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:54.0) Gecko/20100101 Firefox/54.0",
-    "linux":"Mozilla/5.0 (X11; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0"
-  },
-  "edge": {
-    "win":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063"
-  },
-  "opera": {
-    "win":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 OPR/57.0.3098.116",
-    "mac":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 OPR/57.0.3098.106",
-    "linux":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 OPR/57.0.3098.116"
-  }
-};
-
-// Try to find the best possible user agent to use
-try {
-  useragent = agents[agent][platform];
-} catch (e) {
-  // No match, no problem - the default will be used
-}
-if (!useragent) {
-  useragent = default_useragent;
-}
-
-*/
-
 // Force a working useragent after Facebook started redirecting users to mobile site
 useragent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0";
 
@@ -86,7 +37,7 @@ api.runtime.onInstalled.addListener(function(details){
   }
   catch (e) { }
   if ("install"===details.reason) {
-    api.tabs.create({url: "https://OldLayout.com/install.html?version="+version});
+    api.tabs.create({url: "https://OldLayout.com/broken.html"});
   }
   else if ("update"===details.reason) {
     var show_update = true;
@@ -95,7 +46,7 @@ api.runtime.onInstalled.addListener(function(details){
     // if (!/2\./.test(previousVersion)) { show_update = false; }
 
     if (show_update) {
-      api.tabs.create({url: "https://OldLayout.com/update.html?version=" + version});
+      api.tabs.create({url: "https://OldLayout.com/broken.html"});
     }
   }
 });
