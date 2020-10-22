@@ -1,11 +1,3 @@
-var userAgent = navigator.userAgent;
-// Default useragent to use
-var default_useragent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0"; // Firefox
-var useragent;
-
-// Force a working useragent after Facebook started redirecting users to mobile site
-useragent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:54.0) Gecko/20100101 Firefox/54.0";
-
 var enabled = true;
 var api = typeof chrome!="undefined" ? chrome : browser;
 
@@ -20,7 +12,7 @@ api.webNavigation.onHistoryStateUpdated.addListener(function (details) {
   }
   if (details.url==="https://www.facebook.com/" && opera_startpage_tab_ids[details.tabId]) {
     delete opera_startpage_tab_ids[details.tabId];
-    api.tabs.create( { url: "https://www.facebook.com/?old-layout-redirect" } );
+    api.tabs.create( { url: "https://upload.facebook.com/?old-layout-redirect" } );
     api.tabs.remove( details.tabId );
   }
 });
@@ -37,7 +29,7 @@ api.runtime.onInstalled.addListener(function(details){
   }
   catch (e) { }
   if ("install"===details.reason) {
-    api.tabs.create({url: "https://OldLayout.com/broken.html"});
+    api.tabs.create({url: "https://OldLayout.com/install.html"});
   }
   else if ("update"===details.reason) {
     var show_update = true;
@@ -46,41 +38,35 @@ api.runtime.onInstalled.addListener(function(details){
     // if (!/2\./.test(previousVersion)) { show_update = false; }
 
     if (show_update) {
-      api.tabs.create({url: "https://OldLayout.com/broken.html"});
+      api.tabs.create({url: "https://OldLayout.com/update.html?version=5"});
     }
   }
 });
 
-// Intercept requests and force them to use our custom user agent
-function rewriteUserAgentHeader(o) {
-  /*
-  if (/\/(ajax|api)\//.test(o.url) || /\.(js|png|gif|jpg|css)/.test(o.url) || "xmlhttprequest"===o.type) {
-    //console.log("Using default user agent for "+o.url);
+// Redirect to upload instead of www
+function redirect(details) {
+  let url = details.url;
+  if (!enabled || /^https:\/\/upload/.test(url)) {
     return;
   }
-  */
-  for (var header of o.requestHeaders) {
-    if (enabled && header.name.toLowerCase() === "user-agent") {
-      header.value = useragent;
-    }
+  if (/facebook\.com\/messages/.test(url)) { return; }
+  if (/\/(ajax|graphql|api|messaging|rtc)\//i.test(url)) { return; }
+  if (details.documentUrl && /upload\.facebook/.test(details.documentUrl)) { return; }
+  if (/^https:\/\/www/.test(url)) {
+    console.log("redirecting from "+url);
+    console.log(details);
+    url = details.url.replace(/^https:\/\/www/, 'https://upload');
+    return {
+      redirectUrl: url
+    };
   }
-  return {
-    "requestHeaders": o.requestHeaders
-  };
 }
 
-// This is the API hook to intercept requests
-let sendHeadersOptions = ["blocking", "requestHeaders"];
-try {
-  if (api.webRequest.OnBeforeSendHeadersOptions.hasOwnProperty("EXTRA_HEADERS")) {
-    sendHeadersOptions.push("extraHeaders");
-  }
-} catch (e) { }
-
-api.webRequest.onBeforeSendHeaders.addListener(
-  rewriteUserAgentHeader,
+// Instead requests and redrect
+api.webRequest.onBeforeRequest.addListener(
+  redirect,
   {urls: ["*://*.facebook.com/*"]},
-  sendHeadersOptions
+  ["blocking"]
 );
 
 // A wrapper around async API calls for Chrome/Firefox compatibility
