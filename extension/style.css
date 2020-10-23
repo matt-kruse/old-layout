@@ -1,11 +1,31 @@
-.fbPageBanner.uiBoxYellow { display:none !important; }
-/* Hide the empty space at the top of the chat sidebar */
-.fbChatSidebar>div._5qqe { height:43px !important; }
-/* Add a note about video calls to the popup, if it appears */
-a[href="https://www.facebook.com/help/211644178877843"]:after {
-  content: "Because the Old Layout extension tricks Facebook into thinking you're using an older browser, Facebook prevents you from making video calls. Use Messenger.com to make video calls until this is resolved.";
-  display: block;
-  color: black;
-  border: 2px solid red;
-  padding: 3px;
+#oldlayout {
+  position:fixed;
+  right:15px;
+  bottom:15px;
+  height:300px;
+  width:200px;
+  padding:10px;
+  font-size:120%;
+  background-color:white;
+  border:3px solid #4267B2;
+  border-radius:5px;
+  z-index:9999999;
+  box-shadow:5px 5px 3px 3px rgba(0,0,0,.5);
+}
+#oldlayout-header {
+  text-align:center;
+  font-size:150%;
+  color: #4267B2;
+  font-weight:bold;
+  border-bottom:2px solid #4267B2;
+  margin:20px;
+}
+#oldlayout-button {
+  background-color:#4267B2;
+  font-size:110%;
+  color:white;
+  padding:3px 15px;
+}
+#oldlayout-msg {
+  margin-top:5px;
 }

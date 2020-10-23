@@ -4,7 +4,7 @@
   "manifest_version": 2,
   "name": "Old Layout for Facebook",
   "author": "Matt Kruse",
-  "version": "5.2",
+  "version": "6.0",
   "homepage_url": "https://OldLayout.com",
   "icons": {
     "16": "icon-16.png",
@@ -13,18 +13,14 @@
     "128": "icon-128.png"
   },
   "permissions": [
-    "webRequest",
-    "webRequestBlocking",
     "*://*.facebook.com/*"
-  ],
-  "optional_permissions": [
-    "tabs"
   ],
   "background": {
     "scripts": ["background.js"]
   },
   "content_scripts": [{
     "matches": ["*://*.facebook.com/*"],
+    "js": ["content.js"],
     "css": ["style.css"],
     "run_at": "document_start"
   }],
