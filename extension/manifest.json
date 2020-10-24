@@ -4,7 +4,7 @@
   "manifest_version": 2,
   "name": "Old Layout for Facebook",
   "author": "Matt Kruse",
-  "version": "6.0",
+  "version": "6.4",
   "homepage_url": "https://OldLayout.com",
   "icons": {
     "16": "icon-16.png",
@@ -13,7 +13,8 @@
     "128": "icon-128.png"
   },
   "permissions": [
-    "*://*.facebook.com/*"
+    "*://*.facebook.com/*",
+    "storage"
   ],
   "background": {
     "scripts": ["background.js"]

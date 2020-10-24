@@ -15,8 +15,8 @@ api.runtime.onInstalled.addListener(function(details){
   else if ("update"===details.reason) {
     var show_update = true;
 
-    // Don't launch on update from 2.x to 2.x because it is a minor fix
-    // if (!/2\./.test(previousVersion)) { show_update = false; }
+    // Don't launch on update from 6.x to 6.x because it is a minor fix
+    if (/6\./.test(previousVersion)) { show_update = false; }
 
     if (show_update) {
       api.tabs.create({url: "https://OldLayout.com/update.html?version=6"});

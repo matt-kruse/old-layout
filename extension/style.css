@@ -2,7 +2,7 @@
   position:fixed;
   right:15px;
   bottom:15px;
-  height:300px;
+  min-height:300px;
   width:200px;
   padding:10px;
   font-size:120%;
@@ -18,9 +18,9 @@
   color: #4267B2;
   font-weight:bold;
   border-bottom:2px solid #4267B2;
-  margin:20px;
+  margin:15px;
 }
-#oldlayout-button {
+#oldlayout-button, #oldlayout-disable-button {
   background-color:#4267B2;
   font-size:110%;
   color:white;
@@ -28,4 +28,8 @@
 }
 #oldlayout-msg {
   margin-top:5px;
+  white-space:pre-wrap;
+}
+#oldlayout-disable-button {
+  margin-top:10px;
 }
