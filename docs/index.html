@@ -159,9 +159,11 @@
                                 <span class="identify">It looks like you're using Safari.</span>
                             </p>
                             <p>
-                                Sorry, an extension isn't available for Safari due to its technical limitations. But there is a work-around:
+                                Sorry, an extension isn't available for Safari yet due to technical reasons.
                             </p>
+                            <!--
                             <p>See the <a href="safari.html" style="display:inline-block;border-radius:3px;padding:5px 10px;background-color:#007BFF;color:white;">Instructions for Safari</a> to get it working!</p>
+                            -->
                             <p class="showall" style="text-align:center;margin-top:5px;"><small>You can also <a href="#" onclick="showall();return false;" style="text-decoration:underline;color:white;">view all download supported browsers.</a> </small></p>
                         </div>
                     </div>
@@ -255,20 +257,51 @@
         <div class="col-12 text-center">
             <h3>FAQ</h3>
         </div>
-        <div class="col-12 col-lg-6">
+        <div class="col-12">
             <p><b>Q: How long will this work?</b></p>
-            <p>A: I don't know. Definitely not forever, but use it while you can!</p>
+            <p>A: For many (but not all) users, the Old Layout extension successfully switches to the Old Layout for 48 hours without any hacks or side-effects. I don't know how long this will stay working. Definitely not forever, but use it while you can!</p>
 
             <p><b>Q: Will this work with Social Fixer?</b></p>
             <p>A: Yes! All the features of Social Fixer should work with the Old Layout</p>
+
+            <p><b>Q: How does it work?</b></p>
+            <p>A: It does this by triggering an internal Facebook function to switch back to the Old Layout ("Facebook Classic"). This option is offered to Admins of Pages and Groups - but not ALL Pages and Groups. We don't know what criteria must be met for Facebook to offer the switch. It's also offered to some users in their settings menu. We don't know who sees it there or why. Old Layout attempts to switch back using each of those trigger points, in the hope that one of them will work.</p>
+
+            <p><b>Q: DOES IT SWITCH MY USER AGENT?</b></p>
+            <p>A: No. That was a previous method that no longer works. Other extensions may still use this method with a really old browser string, but it comes with limitations and problems, so we no longer offer that solution.</p>
+
+            <p><b>Q: WHY DOESN'T IT WORK FOR ME?</b></p>
+            <p>A: For some unknown reason, not all accounts are eligible to use the method described above. We don't yet know what conditions must be met for someone to be able to switch.</p>
+
+            <p><b>Q: WHY DOES THE NEW LAYOUT HAVE A BLUE BAR NOW?</b></p>
+            <p>A: Old Layout 6.6 adds styles which make the new layout look a little more like the old, and fixes things like the newsfeed column being too big. These are cosmetic changes only, and they don't actually revert the new layout back to the old.</p>
+
+            <p><b>Q: WHAT DO I DO IF I DON'T LIKE THE STYLE CHANGES OF THE NEW LAYOUT?</b></p>
+            <p>A: Uninstall Old Layout</p>
+
+            <p><b>Q: IF I USE THE EXTENSION IN ONE BROWSER WHY DOES IT SWITCH ME IN ANOTHER BROWSER WITHOUT THE EXTENSION?</b></p>
+            <p>A: This extension triggers an account-level switch, which is effective for any browser you use with that account.</p>
+
+            <p><b>Q: IF I SWITCH WITH ONE ACCOUNT WHY DOESN'T ANOTHER ACCOUNT WORK IN THE SAME BROWSER?</b></p>
+            <p>A: Because this is an account-level switch, and not all accounts work. Just because the extension works for one account doesn't mean it will work for other accounts in the same browser. The extension offers the ability to try switching. It doesn't guarantee switching.</p>
+
+            <p><b>Q: IT DOESN'T WORK FOR ME, THAT MEANS THIS EXTENSION SUCKS, RIGHT?</b></p>
+            <p>A: No, it still works for many others. Unfortunately not for you. I'm sorry.</p>
+
+            <p><b>Q: SO I SHOULD LEAVE IT A 1-STAR REVIEW AND SAY BAD THINGS ABOUT IT SUCKING, RIGHT?</b></p>
+            <p>A: No. Please don't.</p>
+
+            <p><b>Q: IF IT DOESN'T WORK NOW WILL IT WORK LATER?</b></p>
+            <p>A: Perhaps. I'm still looking for new ways to trigger the Old Layout, since it obviously still exists and is functioning. With each update, you can try again. It might start working. I encourage you to do this rather than uninstall.</p>
+
+            <p><b>Q: HOW CAN I DONATE TO SUPPORT DEVELOPMENT OF THIS EXTENSION AND OTHER AWESOME TOOLS LIKE IT?</b></p>
+            <p>A: <a href="https://SocialFixer.com/donate.html" target="_blank">https://SocialFixer.com/donate.html</a></p>
+
             <!--
             <p><b>Q: </b></p>
             <p>A: </p>
              -->
-        </div>
-        <div class="col-12 col-lg-6">
-            <p><b>Q: How does it work?</b></p>
-            <p>A: It forces all requests to www.facebook.com to go to upload.facebook.com instead. This url still serves the Old Layout.</p>
+
 
         </div>
     </div>
