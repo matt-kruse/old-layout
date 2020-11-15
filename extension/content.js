@@ -5,7 +5,7 @@ let $ = sel=>document.querySelector(sel);
 let faq = '<a href="https://oldlayout.com/#faq" target="_blank" style="font-weight:bold;text-decoration:underline;">Old Layout FAQ</a>';
 let review_note = `<b>Please do not leave a negative review!</b> This fix works for many people, but not all. I'm sorry it didn't work for you, but it will work for others. Negative reviews hurt the chances of other people finding a fix. Thanks.`;
 let simulate_missing_data = false;
-let simulate_failure = true;
+let simulate_failure = false;
 let simulate_false_positive = false;
 
 addEventListener('load', function() {
@@ -129,7 +129,7 @@ ${review_note}<br><br>
     ];
 
     let fire = function() {
-      console.log("Trying "+index);
+      //console.log("Trying "+index);
       const xhr = new XMLHttpRequest();
       xhr.open('POST', 'https://www.facebook.com/api/graphql/');
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -139,9 +139,9 @@ ${review_note}<br><br>
           //console.log(index);
           //console.log(xhr.responseText);
           if (!/"success":true/.test(xhr.responseText)) {
-            console.log(xhr.responseText);
-            console.log(index);
-            console.log(urls.length);
+            //console.log(xhr.responseText);
+            //console.log(index);
+            //console.log(urls.length);
             if (++index>urls.length-1) {
               msg(`Sorry, but the switch to Old Layout failed.<br><br>${common}${faq}<br><button id="oldlayout-disable-button">Disable This Popup</button>`);
               document.querySelector('#oldlayout-button').style.display="none";
