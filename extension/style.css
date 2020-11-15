@@ -1,9 +1,15 @@
+.fbPageBanner.uiBoxYellow { display:none !important; }
+/* Hide the empty space at the top of the chat sidebar */
+.fbChatSidebar>div._5qqe { height:43px !important; }
+
 #oldlayout {
   position:fixed;
   right:15px;
   bottom:15px;
-  min-height:300px;
-  width:200px;
+  max-height:75vh;
+  overflow:auto;
+  min-width:400px;
+  max-width:600px;
   padding:10px;
   font-size:120%;
   background-color:white;
@@ -18,7 +24,7 @@
   color: #4267B2;
   font-weight:bold;
   border-bottom:2px solid #4267B2;
-  margin:15px;
+  margin:0 15px 10px 15px;
 }
 #oldlayout-button, #oldlayout-disable-button {
   background-color:#4267B2;
@@ -28,8 +34,40 @@
 }
 #oldlayout-msg {
   margin-top:5px;
-  white-space:pre-wrap;
 }
 #oldlayout-disable-button {
   margin-top:10px;
+}
+#oldlayout-release-date {
+  font-size:100%;
+  color:#aaa;
+}
+
+div[id^="mount_"] h1 ~ div[role="main"] > div {
+  width:500px;
+}
+:root:not(.__fb-dark-mode) {
+  --web-wash: #E9EBEE !important;
+  --secondary-icon: white !important;
+  --secondary-text: #385898 !important;
+  --comment-background: #F2F3F5 !important;
+}
+:root:not(.__fb-dark-mode) div[role="banner"] {
+  --nav-bar-background: #4267B2 !important;
+  --primary-button-background: white !important;
+}
+div[id^="mount_"] div[role="article"] *:not([style*="font-size"]) {
+  font-size:.91rem !important;
+}
+div[id^="mount_"] div[role="article"] *[style*="font-size"] * {
+  font-size:inherit !important;
+}
+
+/* Comments */
+div[id^="mount_"] div[role="article"] ul * {
+  line-height:1.24 !important;
+}
+html:not(.__fb-dark-mode) div[id^="mount_"] div[role="article"] ul li *[role="article"] *[style*="text-align"] {
+  color: #1c1e21 !important;
+/*  font-size:13px !important; */
 }
