@@ -1,5 +1,5 @@
 let enabled = true;
-let version = 7.0;
+let version = 7.1;
 let date = "2020-11-15";
 let $ = sel=>document.querySelector(sel);
 let faq = '<a href="https://oldlayout.com/#faq" target="_blank" style="font-weight:bold;text-decoration:underline;">Old Layout FAQ</a>';
