@@ -1,6 +1,6 @@
 let enabled = true;
-let version = 7.1;
-let date = "2020-11-15";
+let version = 7.2;
+let date = "2020-11-23";
 let $ = sel=>document.querySelector(sel);
 let faq = '<a href="https://oldlayout.com/#faq" target="_blank" style="font-weight:bold;text-decoration:underline;">Old Layout FAQ</a>';
 let review_note = `<b>Please do not leave a negative review!</b> This fix works for many people, but not all. I'm sorry it didn't work for you, but it will work for others. Negative reviews hurt the chances of other people finding a fix. Thanks.`;
